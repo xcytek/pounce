@@ -1,0 +1,15 @@
+{
+    "name": "alejandroacosta/pounce",
+    "authors": [
+        {
+            "name": "Alex Acosta",
+            "email": "alexcarter15@hotmail.com"
+        }
+    ],
+    "autoload" : {
+        "psr-4": {
+            "Controllers\\": "app/controllers",
+            "Utils\\": "app/utils"
+        }
+    }
+}
