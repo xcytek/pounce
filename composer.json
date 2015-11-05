@@ -7,9 +7,14 @@
         }
     ],
     "autoload" : {
+        "classmap": [
+            "RequestHandler.php"
+        ],
+
         "psr-4": {
             "Controllers\\": "app/controllers",
-            "Utils\\": "app/utils"
+            "Utils\\": "app/utils",
+            "Configuration\\": "app/config"
         }
     }
 }

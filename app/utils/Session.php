@@ -2,12 +2,17 @@
 
 namespace Utils;
 
-
+/**
+ * Class Session
+ *
+ * @package Utils
+ */
 class Session
 {
     /**
      * Use an array to store the user data
      *
+     * @param $key
      * @param $data
      */
     public static function put($key, $data)
@@ -36,6 +41,14 @@ class Session
     public static function all()
     {
         return $_SESSION;
+    }
+
+    /**
+     * Destroy Session Data
+     */
+    public static function destroy()
+    {
+        unset($_SESSION);
     }
 
 }

@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Pounce Exercise</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
@@ -24,6 +24,10 @@
         .colors {
             margin: 100px auto;
         }
+        .not-found-page {
+            margin: 100px auto;
+            text-align: center;
+        }
         .login-form {
             margin: 100px auto;
             padding: 25px;
@@ -35,6 +39,12 @@
         .custom-btn {
             color: white;
             background-color: #BA2113;
+        }
+        .block-color {
+            margin: 3px;
+            display: inline-block;
+            width:35px;
+            height: 35px;
         }
     </style>
 </head>
@@ -50,29 +60,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Alex Acosta WebSite</a>
+            <a class="navbar-brand" href="#">Alex Acosta (logout)</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Color List</a></li>
             </ul>
-        </div><!--/.nav-collapse -->
+        </div>
     </div>
 </nav>
 
 <div class="container">
+    <?php include $view . '.php'; ?>
+</div>
 
-    <?php
-        include $view . '.php';
-    ?>
-
-</div><!-- /.container -->
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="public/js/plugins.js"></script>
+<script src="public/js/buildHtml.js"></script>
+<script src="public/js/ready.js"></script>
+<script src="public/js/api.js"></script>
 </body>
 </html>
