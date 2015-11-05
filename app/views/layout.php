@@ -60,12 +60,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Alex Acosta (logout)</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Color List</a></li>
-            </ul>
+            <a class="navbar-brand" href="?view=logout">
+                <?php if (is_array(Utils\Session::get('user'))) : ?>
+                <?=Utils\Session::get('user')['email']?> (logout)
+                <?php endif; ?>
+            </a>
         </div>
     </div>
 </nav>

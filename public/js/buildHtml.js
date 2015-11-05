@@ -10,3 +10,8 @@ function populateColorsTable(colors) {
 
     table.append(html);
 }
+
+function showErrorMessage(error, message) {
+    error.removeClass('hide');
+    error.html(message);
+}

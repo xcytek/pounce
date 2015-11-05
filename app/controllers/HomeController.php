@@ -21,10 +21,10 @@ class HomeController
      */
     public function login()
     {
-        if (Session::get('user') !== null) {
-            View::render('login');
+        if (is_array(Session::get('user'))) {
+            Redirect::to('?view=list');
         } else {
-            $this->colorList();
+            View::render('login');
         }
     }
 
@@ -33,7 +33,11 @@ class HomeController
      */
     public function colorList()
     {
-        View::render('color-list');
+        if (! is_array(Session::get('user'))) {
+            Redirect::to();
+        } else {
+            View::render('color-list');
+        }
     }
 
     /**
@@ -42,6 +46,28 @@ class HomeController
     public function E404()
     {
         View::render('404');
+    }
+
+    /**
+     * Do login with POST form data
+     */
+    public function signin()
+    {
+        $data = Request::post();
+        if ($this->validateFormData($data)) {
+            Session::put('user', $data);
+            $message = [
+                'type'    => 'success',
+                'message' => 'Datos Validos'
+            ];
+        } else {
+            $message = [
+                'type'    => 'error',
+                'message' => 'Por favor ingrese datos validos',
+            ];
+        }
+
+        echo Response::json($message);
     }
 
     /**
@@ -54,7 +80,7 @@ class HomeController
     }
 
     /**
-     * Get Colors List Ordered
+     * Get Colors List Ordered Web Service
      */
     public function getColorsList()
     {
@@ -81,5 +107,58 @@ class HomeController
 
         // Reverse the array to get Z-A order (DESC)
         return array_reverse($list);
+    }
+
+    /**
+     * Validate POST Form Data
+     *
+     * @param $data
+     * @return bool
+     */
+    private function validateFormData($data)
+    {
+        if (isset($data['email'], $data['password'])) {
+            $email    = $data['email'];
+            $password = $data['password'];
+        } else {
+            return false;
+        }
+
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)
+            && $this->validPassword($password)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Only Validate for Password
+     *
+     *  * Validate Password
+     * At least 1 lowercase
+     * At least 1 uppercase
+     * At least 1 number
+     * At least 1 special character
+     * Minimum Length of 6
+     *
+     * @param $password
+     * @return bool
+     */
+    private function validPassword($password) {
+        $uppercase = preg_match('@[A-Z]@', $password);
+        $lowercase = preg_match('@[a-z]@', $password);
+        $number    = preg_match('@[0-9]@', $password);
+        $special   = preg_match('/[!@#$%^&*()\-_=+{};:,<.>]/', $password);
+
+        if (! $uppercase
+            || ! $lowercase
+            || ! $number
+            || ! $special
+            || strlen($password) < 6) {
+            return false;
+        }
+
+        return true;
     }
 }

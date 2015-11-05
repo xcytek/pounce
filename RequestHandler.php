@@ -20,6 +20,9 @@ class RequestHandler
                 case 'list' :
                     $controller->colorList();
                     break;
+                case 'signin' :
+                    $controller->signin();
+                    break;
                 case 'logout' :
                     $controller->logout();
                     break;
