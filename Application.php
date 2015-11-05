@@ -3,9 +3,9 @@
 use Controllers\HomeController;
 
 /**
- * Class RequestHandler
+ * Class Application
  */
-class RequestHandler
+class Application
 {
     /**
      * Main Function to Handle the HTTP Requests

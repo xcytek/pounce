@@ -8,7 +8,7 @@
     ],
     "autoload" : {
         "classmap": [
-            "RequestHandler.php"
+            "Application.php"
         ],
 
         "psr-4": {
